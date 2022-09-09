@@ -11,9 +11,11 @@ jobs:
       - run: |
           docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run: uname -a
-      - run: docker build -t gkaskonas/nextcloud:24.0.2-custom .
-      - run: docker push gkaskonas/nextcloud:24.0.5-custom
-      - run: docker push gkaskonas/nextcloud:latest
+      - run: docker build -t gkaskonas/nextcloud-custom
+      - run: docker tag gkaskonas/nextcloud-custom gkaskonas/nextcloud-custom:24.0.5
+      - run: docker tag gkaskonas/nextcloud-custom gkaskonas/nextcloud-custom:latest
+      - run: docker push gkaskonas/nextcloud-custom:24.0.5
+      - run: docker push gkaskonas/nextcloud-custom:latest
 
 workflows:
   build:
