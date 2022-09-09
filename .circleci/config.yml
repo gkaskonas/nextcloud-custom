@@ -4,14 +4,13 @@ version: 2.1
 jobs:
   build-medium:
     machine:
-      image: ubuntu-2004:202101-01
-    resource_class: arm.medium
+      image: ubuntu-2204:2022.07.1
     steps:
       - checkout
       - run: |
           docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run: uname -a
-      - run: docker buildx build --platform=linux/amd64,linux/arm64,linux/arm/v7 -t gkaskonas/nextcloud .
+      - run: docker build -t gkaskonas/nextcloud .
       - run: docker tag gkaskonas/nextcloud gkaskonas/nextcloud:24.0.5
       - run: docker tag gkaskonas/nextcloud gkaskonas/nextcloud:latest
       - run: docker push gkaskonas/nextcloud:24.0.5
