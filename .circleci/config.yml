@@ -11,9 +11,9 @@ jobs:
           docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run: uname -a
       - run: docker build -t gkaskonas/nextcloud .
-      - run: docker tag gkaskonas/nextcloud gkaskonas/nextcloud:24.0.6
+      - run: docker tag gkaskonas/nextcloud gkaskonas/nextcloud:25.0.0
       - run: docker tag gkaskonas/nextcloud gkaskonas/nextcloud:latest
-      - run: docker push gkaskonas/nextcloud:24.0.6
+      - run: docker push gkaskonas/nextcloud:25.0.0
       - run: docker push gkaskonas/nextcloud:latest
 
 workflows:
